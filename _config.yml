@@ -1,0 +1,11 @@
+title: "Tennis Club de Coye-la-Forêt"
+description: "TCCF — Coye-la-Forêt, Oise"
+baseurl: ""
+url: "https://tonpseudo.github.io"
+
+# Thème désactivé, on utilise notre propre layout
+theme: null
+
+# Plugins GitHub Pages compatibles
+plugins:
+  - jekyll-seo-tag

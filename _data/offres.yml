@@ -1,0 +1,70 @@
+# ============================================================
+#  OFFRES DU CLUB — fichier à modifier pour mettre à jour
+#  les offres affichées sur le site.
+#
+#  Pour chaque offre, vous pouvez modifier :
+#    - nom        : le titre de l'offre
+#    - categorie  : Adhésion / Carnet de tickets / Produit
+#    - description: texte de présentation
+#    - acces      : liste de ce que l'offre donne accès à
+#    - condition  : (optionnel) ex: "À partir de 11 ans"
+#    - tickets    : (optionnel) nombre de tickets pour carnets
+#    - prix       : texte du tarif affiché
+#    - lien       : URL vers la page Ten'up de l'offre
+# ============================================================
+
+- nom: "Padel - Adhésion Adulte Padel (2026)"
+  categorie: "Adhésion"
+  description: "Adhésion pour la réservation de la piste de padel du TCCF."
+  acces:
+    - "Réservation de la piste de padel du club"
+    - "Accès aux créneaux padel de la saison"
+  prix: "À partir de 154,00 €"
+  lien: "https://tenup.fft.fr/club/56600079/offres"
+
+- nom: "Pickleball - Adhésion Pickleball (2026)"
+  categorie: "Adhésion"
+  description: "Adhésion Pickleball Adulte et Enfants pour la pratique libre."
+  acces:
+    - "Pratique libre du Pickleball"
+    - "Licence Pickleball ou Multi-Raquettes"
+  condition: "À partir de 11 ans"
+  prix: "À partir de 34,00 €"
+  lien: "https://tenup.fft.fr/club/56600079/offres"
+
+- nom: "Tennis / Pickleball - Adhésion Été (2026)"
+  categorie: "Adhésion"
+  description: "Adhésion Été valable du 1er juin au 31 août 2026."
+  acces:
+    - "Accès aux courts de tennis"
+    - "Créneaux Pickleball du dimanche soir"
+  prix: "À partir de 76,00 €"
+  lien: "https://tenup.fft.fr/club/56600079/offres"
+
+- nom: "Tennis / Padel - Invitation x 1 (2026)"
+  categorie: "Carnet de tickets"
+  description: "Invitation pour tout joueur extérieur au club (tennis ou padel)."
+  acces:
+    - "1 invitation pour un joueur extérieur"
+    - "Valable tennis ou padel"
+  tickets: 1
+  prix: "Tarif unique à 10,00 €"
+  lien: "https://tenup.fft.fr/club/56600079/offres"
+
+- nom: "Tennis / Padel - Invitation x 3 (2026)"
+  categorie: "Carnet de tickets"
+  description: "Invitations pour tout joueur extérieur au club (tennis ou padel)."
+  acces:
+    - "3 invitations pour des joueurs extérieurs"
+    - "Valable tennis ou padel"
+  tickets: 3
+  prix: "Tarif unique à 20,00 €"
+  lien: "https://tenup.fft.fr/club/56600079/offres"
+
+- nom: "Carte Accès (2026)"
+  categorie: "Produit"
+  description: "Carte d'accès au club pour la saison 2026."
+  acces:
+    - "Accès aux installations du club"
+  prix: "Tarif unique à 10,00 €"
+  lien: "https://tenup.fft.fr/club/56600079/offres"

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} — TCCF</title>
+  <meta name="description" content="{{ page.description }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <style>
+    /* ── Page layout ── */
+    .page-offres {
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .page-header {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .page-header a.back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.12s;
+    }
+    .page-header a.back:hover { color: var(--text); }
+    .page-header a.back svg { width: 16px; height: 16px; }
+
+    .page-header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+    .page-header .logo {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--btn-border);
+      flex-shrink: 0;
+    }
+    .page-header .logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── Main + sidebar ── */
+    .layout-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    /* ── Sidebar (bouton statique) ── */
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 1.5rem;
+    }
+    .sidebar-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--btn-border);
+      box-shadow: var(--shadow);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+    .sidebar-card .sidebar-icon {
+      width: 48px; height: 48px;
+      background: var(--green-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sidebar-card .sidebar-icon svg { width: 24px; height: 24px; }
+    .sidebar-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .sidebar-card p  { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+    .sidebar-card .btn-primary { width: 100%; justify-content: center; }
+
+    /* ── Offer cards list ── */
+    .offres-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .offre-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--btn-border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .offre-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.11);
+      transform: translateY(-2px);
+    }
+
+    .offre-body {
+      padding: 1.25rem 1.25rem 1rem;
+    }
+    .offre-body h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .offre-body .desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Accès list */
+    .acces-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 0.8rem;
+    }
+    .acces-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    .acces-list li::before {
+      content: '';
+      display: block;
+      width: 16px; height: 16px;
+      min-width: 16px;
+      background: var(--green-light);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e7e50' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 10px;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-top: 1px;
+    }
+
+    /* Condition badge */
+    .condition-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    /* Tickets badge */
+    .tickets-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .tickets-tag svg { width: 15px; height: 15px; }
+
+    /* Footer of card */
+    .offre-footer {
+      padding: 0.9rem 1.25rem;
+      border-top: 1px solid var(--btn-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .offre-prix {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ── Mobile: sidebar goes to bottom ── */
+    @media (max-width: 680px) {
+      .layout-wrapper { flex-direction: column; }
+      .sidebar { width: 100%; position: static; }
+      .sidebar-card { flex-direction: row; text-align: left; }
+      .sidebar-card .btn-primary { width: auto; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-offres">
+
+  <!-- Header -->
+  <div class="page-header">
+    <a href="{{ '/' | relative_url }}" class="back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Retour
+    </a>
+    <h1>{{ page.title }}</h1>
+    <div class="logo">
+      <img src="{{ '/assets/images/logo.jpg' | relative_url }}" alt="Logo TCCF" />
+    </div>
+  </div>
+
+  <div class="layout-wrapper">
+
+    <!-- Liste des offres -->
+    <div class="offres-list">
+      {% for offre in site.data.offres %}
+      <div class="offre-card">
+        <div class="offre-body">
+
+          <!-- Badge catégorie -->
+          {% if offre.categorie == "Adhésion" %}
+            <span class="badge badge-adhesion">{{ offre.categorie }}</span>
+          {% elsif offre.categorie == "Carnet de tickets" %}
+            <span class="badge badge-carnet">{{ offre.categorie }}</span>
+          {% else %}
+            <span class="badge badge-produit">{{ offre.categorie }}</span>
+          {% endif %}
+
+          <h2>{{ offre.nom }}</h2>
+          <p class="desc">{{ offre.description }}</p>
+
+          <!-- Condition (optionnel) -->
+          {% if offre.condition %}
+          <div class="condition-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            {{ offre.condition }}
+          </div>
+          {% endif %}
+
+          <!-- Tickets (optionnel) -->
+          {% if offre.tickets %}
+          <div class="tickets-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>
+            {{ offre.tickets }} ticket{% if offre.tickets > 1 %}s{% endif %}
+          </div>
+          {% endif %}
+
+          <!-- Ce que l'offre donne accès à -->
+          {% if offre.acces %}
+          <ul class="acces-list">
+            {% for item in offre.acces %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+        </div>
+
+        <!-- Prix + bouton -->
+        <div class="offre-footer">
+          <span class="offre-prix">{{ offre.prix }}</span>
+          <a href="{{ offre.lien }}" target="_blank" rel="noopener" class="btn-secondary">
+            Voir le détail
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Sidebar bouton statique -->
+    <div class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1e7e50" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="9" y1="13" x2="15" y2="13"/>
+            <line x1="9" y1="17" x2="15" y2="17"/>
+          </svg>
+        </div>
+        <h3>Toutes les offres</h3>
+        <p>Consultez l'ensemble des offres sur le site officiel Ten'up.</p>
+        <a href="https://tenup.fft.fr/club/56600079/offres" target="_blank" rel="noopener" class="btn-primary">
+          Voir sur Ten'up
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
